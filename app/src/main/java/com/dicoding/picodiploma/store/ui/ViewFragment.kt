@@ -1,4 +1,4 @@
-package com.dicoding.picodiploma.store
+package com.dicoding.picodiploma.store.ui
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.RecyclerView
+import com.dicoding.picodiploma.store.data.Barang
+import com.dicoding.picodiploma.store.MainAdapter
 import com.dicoding.picodiploma.store.databinding.FragmentViewBinding
 
 // TODO: Rename parameter arguments, choose names that match

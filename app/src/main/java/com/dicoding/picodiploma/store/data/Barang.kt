@@ -1,4 +1,4 @@
-package com.dicoding.picodiploma.store
+package com.dicoding.picodiploma.store.data
 
 data class Barang(
     val name: String,

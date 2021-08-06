@@ -3,6 +3,7 @@ package com.dicoding.picodiploma.store
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.dicoding.picodiploma.store.data.Barang
 import com.dicoding.picodiploma.store.databinding.ItemViewBinding
 import java.text.DecimalFormat
 

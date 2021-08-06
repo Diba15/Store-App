@@ -1,4 +1,4 @@
-package com.dicoding.picodiploma.store
+package com.dicoding.picodiploma.store.ui
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
