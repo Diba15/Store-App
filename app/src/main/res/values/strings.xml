@@ -13,4 +13,5 @@
     <string name="hint_user">Masukkan Username</string>
     <string name="hint_pass">Masukkan Password</string>
     <string name="login">Login</string>
+    <string name="log_out">Log out</string>
 </resources>
