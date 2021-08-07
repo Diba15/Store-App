@@ -4,8 +4,10 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/AndroidStudioProject/Store/app/src/main/res/drawable-v23/splash_bg.xml" value="0.2796875" />
+        <entry key="..\:/AndroidStudioProject/Store/app/src/main/res/drawable-v24/shape_button.xml" value="0.2796875" />
         <entry key="..\:/AndroidStudioProject/Store/app/src/main/res/drawable/splash_bg.xml" value="0.2796875" />
         <entry key="..\:/AndroidStudioProject/Store/app/src/main/res/layout/activity_add_fragment.xml" value="0.1766304347826087" />
+        <entry key="..\:/AndroidStudioProject/Store/app/src/main/res/layout/activity_login_activity.xml" value="0.264" />
         <entry key="..\:/AndroidStudioProject/Store/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/AndroidStudioProject/Store/app/src/main/res/layout/activity_splash.xml" value="0.1766304347826087" />
         <entry key="..\:/AndroidStudioProject/Store/app/src/main/res/layout/fragment_add.xml" value="0.1766304347826087" />

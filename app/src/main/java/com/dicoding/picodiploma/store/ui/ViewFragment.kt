@@ -1,14 +1,14 @@
 package com.dicoding.picodiploma.store.ui
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.RecyclerView
-import com.dicoding.picodiploma.store.data.Barang
 import com.dicoding.picodiploma.store.MainAdapter
+import com.dicoding.picodiploma.store.data.Barang
 import com.dicoding.picodiploma.store.databinding.FragmentViewBinding
 
 // TODO: Rename parameter arguments, choose names that match
@@ -21,7 +21,7 @@ private const val ARG_PARAM2 = "param2"
  * Use the [ViewFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class ViewFragment : Fragment() {
+class ViewFragment : Fragment(){
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null

@@ -3,6 +3,8 @@ package com.dicoding.picodiploma.store
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
+import com.dicoding.picodiploma.store.ui.AddFragment
+import com.dicoding.picodiploma.store.ui.ViewFragment
 
 class PagerAdapter(fm: FragmentManager): FragmentPagerAdapter(fm) {
 
