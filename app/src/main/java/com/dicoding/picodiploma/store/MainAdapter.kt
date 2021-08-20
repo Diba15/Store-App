@@ -3,22 +3,24 @@ package com.dicoding.picodiploma.store
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.dicoding.picodiploma.store.data.Barang
+import com.dicoding.picodiploma.store.data.viewItem.Item
 import com.dicoding.picodiploma.store.databinding.ItemViewBinding
 import java.text.DecimalFormat
 
 class MainAdapter(
-    private val data: List<Barang>) :
+    private val data: ArrayList<Item>,
+    var handler: (Int, Item) -> Unit
+) :
     RecyclerView.Adapter<MainAdapter.ViewHolder>() {
 
     class ViewHolder(val binding: ItemViewBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(barang: Barang) = with(binding) {
-            binding.itemName.text = barang.name
-            val formatter = DecimalFormat("###,###,##0.00")
-            val priceFormat = formatter.format(barang.price)
+        fun bind(item: Item) = with(binding) {
+            binding.itemName.text = item.item_name
+            val formatter = DecimalFormat("###,###,##0")
+            val priceFormat = formatter.format(item.item_price)
             binding.itemPrice.text = "Rp.${priceFormat}"
-            binding.itemQty.text = "${barang.quantity}x"
+            binding.itemQty.text = "${item.item_stock}x"
         }
     }
 
@@ -34,6 +36,11 @@ class MainAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(data[position])
+        val item = data[position]
+        with(holder) {
+            bind(item)
+            binding.root.setOnClickListener { handler(position, item) }
+        }
     }
 
 }

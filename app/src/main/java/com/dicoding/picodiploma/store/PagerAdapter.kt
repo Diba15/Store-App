@@ -6,11 +6,11 @@ import androidx.fragment.app.FragmentPagerAdapter
 import com.dicoding.picodiploma.store.ui.AddFragment
 import com.dicoding.picodiploma.store.ui.ViewFragment
 
-class PagerAdapter(fm: FragmentManager): FragmentPagerAdapter(fm) {
+class PagerAdapter(fm: FragmentManager, id: Int): FragmentPagerAdapter(fm) {
 
     private val pages = listOf(
-        AddFragment(),
-        ViewFragment()
+        AddFragment(id),
+        ViewFragment(id)
     )
 
     override fun getCount(): Int {
