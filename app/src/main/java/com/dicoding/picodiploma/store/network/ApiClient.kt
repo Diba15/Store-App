@@ -1,5 +1,6 @@
 package com.dicoding.picodiploma.store.network
 
+import com.dicoding.picodiploma.store.data.check.CheckResponse
 import com.dicoding.picodiploma.store.data.item.InsertItemResponse
 import com.dicoding.picodiploma.store.data.item.UpdateItemResponse
 import com.dicoding.picodiploma.store.data.login.ResponseLogin
@@ -32,6 +33,13 @@ interface ApiClient {
         @Field("item_stock") item_stock: Int,
         @Field("item_id") item_id: Int
     ) : Call<UpdateItemResponse>
+
+    @FormUrlEncoded
+    @POST("api/check.php")
+    fun check(
+        @Field("username") username: String,
+        @Field("toko") toko: Int
+    ) : Call<CheckResponse>
 
     @GET("api/readItem.php")
     fun readItem(

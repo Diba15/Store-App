@@ -34,12 +34,16 @@ class LoginActivity : AppCompatActivity() {
             username = binding.usernameEditText.text?.trim().toString()
             password = binding.passwordEditText.text?.trim().toString()
 
-            if (username == "") {
-                binding.registerTl.error = "Username tidak boleh kosong!"
-            } else if(password == "") {
-                binding.passRegisTl.error = "Password tidak boleh kosong!"
-            } else {
-                getData()
+            when {
+                username == "" -> {
+                    binding.registerTl.error = "Username tidak boleh kosong!"
+                }
+                password == "" -> {
+                    binding.passRegisTl.error = "Password tidak boleh kosong!"
+                }
+                else -> {
+                    getData()
+                }
             }
         }
     }
@@ -57,23 +61,18 @@ class LoginActivity : AppCompatActivity() {
                             Toast.makeText(this@LoginActivity, "Login Success", Toast.LENGTH_LONG)
                                 .show()
                             val intent = Intent(this@LoginActivity, MainActivity::class.java)
-                            val bundle = Bundle()
-//                            with(bundle) {
-//                                putInt("id", response.body()!!.sanstore.id_user)
-//                                putString("username", response.body()!!.sanstore.username)
-//                                putString("password", response.body()!!.sanstore.password)
-//                                putInt("toko", response.body()!!.sanstore.toko)
-//                            }
                             saveUsername(response.body()!!.sanstore.username)
                             saveToko(response.body()!!.sanstore.toko)
                             Login(true)
-//                            intent.putExtras(bundle)
                             startActivity(intent)
                             finish()
                         } else {
                             Toast.makeText(this@LoginActivity, "Login gagal", Toast.LENGTH_LONG)
                                 .show()
                         }
+                    } else {
+                        Toast.makeText(this@LoginActivity, response.body()?.sanstore.toString(), Toast.LENGTH_LONG)
+                            .show()
                     }
                 }
 
