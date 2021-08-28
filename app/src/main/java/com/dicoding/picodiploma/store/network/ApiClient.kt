@@ -4,6 +4,7 @@ import com.dicoding.picodiploma.store.data.check.CheckResponse
 import com.dicoding.picodiploma.store.data.item.InsertItemResponse
 import com.dicoding.picodiploma.store.data.item.UpdateItemResponse
 import com.dicoding.picodiploma.store.data.login.ResponseLogin
+import com.dicoding.picodiploma.store.data.reset.ResetResponse
 import com.dicoding.picodiploma.store.data.viewItem.Item
 import retrofit2.Call
 import retrofit2.http.*
@@ -40,6 +41,13 @@ interface ApiClient {
         @Field("username") username: String,
         @Field("toko") toko: Int
     ) : Call<CheckResponse>
+
+    @FormUrlEncoded
+    @POST("api/resetStok.php")
+    fun reset(
+        @Field("toko") toko:Int,
+        @Field("item_stock") item_stock: Int,
+    ) : Call<ResetResponse>
 
     @GET("api/readItem.php")
     fun readItem(

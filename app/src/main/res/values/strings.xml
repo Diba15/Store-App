@@ -15,4 +15,6 @@
     <string name="hint_pass">Masukkan Password</string>
     <string name="login">Login</string>
     <string name="log_out">Log out</string>
+    <string name="reset_stok">Reset Stok</string>
+    <string name="search">search</string>
 </resources>

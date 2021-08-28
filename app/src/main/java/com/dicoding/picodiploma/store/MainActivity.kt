@@ -14,10 +14,12 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.RecyclerView
 import com.dicoding.picodiploma.store.data.check.CheckResponse
 import com.dicoding.picodiploma.store.data.item.UpdateItemResponse
+import com.dicoding.picodiploma.store.data.reset.ResetResponse
 import com.dicoding.picodiploma.store.data.viewItem.Item
 import com.dicoding.picodiploma.store.databinding.ActivityMainBinding
 import com.dicoding.picodiploma.store.network.RetrofitClient
@@ -58,6 +60,7 @@ class MainActivity : AppCompatActivity() {
         readItem()
         refresh()
         checkIn()
+        binding.itemSearch.isVisible = false
         binding.refreshBtn.setOnClickListener {
             binding.rvItem.adapter = null
             readItem()
@@ -95,17 +98,56 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == R.id.log_out) {
-            val editor: SharedPreferences.Editor = sharedPreferences.edit()
-            editor.clear()
-            editor.apply()
-            val intent = Intent(this, LoginActivity::class.java)
-            startActivity(intent)
-            finish()
+        when (item.itemId) {
+            R.id.log_out -> {
+                val editor: SharedPreferences.Editor = sharedPreferences.edit()
+                editor.clear()
+                editor.apply()
+                val intent = Intent(this, LoginActivity::class.java)
+                startActivity(intent)
+                finish()
+            }
+            R.id.reset_stok -> {
+                with(api) {
+                    reset(getToko(), 0).enqueue(object : Callback<ResetResponse> {
+                        override fun onResponse(
+                            call: Call<ResetResponse>,
+                            response: Response<ResetResponse>
+                        ) {
+                            if (response.isSuccessful) {
+                                if (response.body()?.response == true) {
+                                    Snackbar.make(
+                                        binding.root,
+                                        "Reset Stok Berhasil",
+                                        Snackbar.LENGTH_LONG
+                                    )
+                                        .show()
+                                    binding.rvItem.adapter = null
+                                    readItem()
+                                } else {
+                                    Snackbar.make(binding.root, "Gagal Mengubah Stok", Snackbar.LENGTH_LONG)
+                                        .show()
+                                }
+                            } else {
+                                Toast.makeText(this@MainActivity, "Gagal", Toast.LENGTH_LONG).show()
+                            }
+                        }
+
+                        override fun onFailure(call: Call<ResetResponse>, t: Throwable) {
+                            t.message?.let { Log.e("ErrorRetro", it) }
+                        }
+
+                    })
+                }
+            }
+            R.id.search_menu -> {
+                binding.itemSearch.isVisible = !binding.itemSearch.isVisible
+            }
         }
         return super.onOptionsItemSelected(item)
     }
 
+    @Suppress("NotifyDataSetChanged")
     private fun refresh() {
         binding.swipeRefresh.setOnRefreshListener {
             newList.clear()
