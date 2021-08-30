@@ -1,5 +1,6 @@
 package com.dicoding.picodiploma.store
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Filter
@@ -25,12 +26,14 @@ class MainAdapter(
 
     class ViewHolder(val binding: ItemViewBinding) :
         RecyclerView.ViewHolder(binding.root) {
+        @SuppressLint("SetTextI18n")
         fun bind(item: Item) = with(binding) {
             binding.itemName.text = item.item_name
             val formatter = DecimalFormat("###,###,##0")
             val priceFormat = formatter.format(item.item_price)
             binding.itemPrice.text = "Rp.${priceFormat}"
             binding.itemQty.text = "${item.item_stock}x"
+            binding.minStok.text = "Min Stok: ${item.min_stok}"
         }
     }
 

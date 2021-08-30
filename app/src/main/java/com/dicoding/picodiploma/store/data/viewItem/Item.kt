@@ -5,5 +5,6 @@ data class Item(
     val id_user: Int,
     val item_name: String,
     val item_price: Int,
-    val item_stock: Int
+    val item_stock: Int,
+    val min_stok: Int
 )

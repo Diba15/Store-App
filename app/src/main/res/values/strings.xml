@@ -17,4 +17,5 @@
     <string name="log_out">Log out</string>
     <string name="reset_stok">Reset Stok</string>
     <string name="search">search</string>
+    <string name="min_stok">Min Stok: %1$d</string>
 </resources>
